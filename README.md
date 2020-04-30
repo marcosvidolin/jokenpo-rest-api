@@ -34,5 +34,5 @@ Access the API documentation at:
 ## Rules
 
 <p align="center"> 
-  <img src="./github/rules.png">
+  <img src=".github/rules.png">
 </p>
