@@ -5,6 +5,9 @@ public class Player {
     private String name;
     private String username;
 
+    public Player() {
+    }
+
     public Player(String username) {
         this.username = username;
     }
@@ -23,6 +26,10 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUsername() {
