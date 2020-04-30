@@ -5,6 +5,7 @@ import com.marcosvidolin.jokenpo.domain.GeekEngine;
 import com.marcosvidolin.jokenpo.domain.Move;
 import com.marcosvidolin.jokenpo.domain.Player;
 import com.marcosvidolin.jokenpo.domain.exception.BusinessException;
+import com.marcosvidolin.jokenpo.domain.exception.ModelAlreadyExistsException;
 import com.marcosvidolin.jokenpo.domain.exception.ModelNotFoundException;
 import com.marcosvidolin.jokenpo.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,9 +67,10 @@ public class GameService {
      * @return Game
      * @throws ModelNotFoundException
      */
-    public Game addPlayerToGame(UUID code, Player player) throws ModelNotFoundException, BusinessException {
+    public Game addPlayerToGame(UUID code, Player player)
+            throws ModelNotFoundException, BusinessException, ModelAlreadyExistsException {
         Game game = this.findByCode(code);
-        this.playerService.checkPlayer(player);
+        this.playerService.create(player);
         game.addPlayer(player);
         return game;
     }

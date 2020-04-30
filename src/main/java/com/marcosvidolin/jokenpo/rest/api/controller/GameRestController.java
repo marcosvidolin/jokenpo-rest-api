@@ -4,6 +4,7 @@ import com.marcosvidolin.jokenpo.domain.Game;
 import com.marcosvidolin.jokenpo.domain.Move;
 import com.marcosvidolin.jokenpo.domain.Player;
 import com.marcosvidolin.jokenpo.domain.exception.BusinessException;
+import com.marcosvidolin.jokenpo.domain.exception.ModelAlreadyExistsException;
 import com.marcosvidolin.jokenpo.domain.exception.ModelNotFoundException;
 import com.marcosvidolin.jokenpo.rest.api.request.CreateGameRequest;
 import com.marcosvidolin.jokenpo.rest.api.request.MoveRequest;
@@ -53,7 +54,7 @@ public class GameRestController {
 
     @PostMapping("/{gameCode}/players")
     public ResponseEntity<Player> move(@PathVariable UUID gameCode, @RequestBody Player player)
-            throws ModelNotFoundException, BusinessException {
+            throws ModelNotFoundException, BusinessException, ModelAlreadyExistsException {
         this.service.addPlayerToGame(gameCode, player);
         return ResponseEntity.status(HttpStatus.CREATED).body(player);
     }

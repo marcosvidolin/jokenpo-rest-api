@@ -83,6 +83,7 @@ public class Game {
         if (player == null) {
             throw new BusinessException("Player with username '" + username + "' was not found.");
         }
+        Item.getItemByNameIgnoreCase(move.getItemValue());
         this.moves.add(move);
     }
 
